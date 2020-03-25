@@ -8,7 +8,7 @@ from nltk.tokenize import regexp_tokenize, TweetTokenizer # funtions for tokeniz
 from nltk import WordNetLemmatizer
 from nltk.corpus import stopwords
 from nltk import download
-nltk.download('wordnet')
+#download('wordnet')
 from sklearn.feature_extraction.text import TfidfVectorizer
 
 def read_data(filepath):
