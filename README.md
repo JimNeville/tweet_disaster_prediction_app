@@ -1,7 +1,7 @@
 # Tweet Disaster Prediction API
 A Machine Learning API that utilizes Natural Language Processing (NLP) for predicting whether a tweet is about an actual disaster or not.
 
-## Technologies Used
+## Technologies/Libraries Used
 - Python
 - Flask
 - SK Learn
@@ -28,4 +28,15 @@ Once the API is running, test the API by following the steps below:
 
 
 ## Interacting with the API - Production and Local Versions
+```
+{bash}
+# Getting a prediction
+$ curl -i -X POST -d '{"text": "This is a test"}' http://localhost:3000/predict.json
+HTTP/1.0 200 OK
+...
+{
+"result": 0
+}
+```
 
+A result of 1 indicates the model predicts the tweet is about an actual disaster while a result of 0 indicates that the model predicts the tweet is not about an actual disaster.
