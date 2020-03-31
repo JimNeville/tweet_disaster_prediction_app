@@ -28,6 +28,20 @@ Once the API is running, test the API by following the steps below:
 
 
 ## Interacting with the API - Production and Local Versions
+
+#### Production Version
+````
+{bash}
+# Getting a prediction
+$ curl -i -X POST -d '{"text": "This is a test"}' https://tweet-disaster-prediction.herokuapp.com/predict.json
+HTTP/1.0 200 OK
+...
+{
+"result": 0
+}
+````
+
+#### Local Version
 ```
 {bash}
 # Getting a prediction
