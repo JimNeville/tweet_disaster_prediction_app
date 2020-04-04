@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, Response 
+from flask import Flask, request, jsonify, Response, render_template, make_response 
 from flask_restful import Resource, Api
 import pandas as pd
 import pickle
@@ -16,8 +16,13 @@ class status(Resource):
 		return jsonify({"Status": 'Api is running'})
 
 class predict(Resource):
+	def get(self):
+		headers = {'Content-Type': 'text/html'}
+		return make_response(render_template('base_form.html'),200,headers)
+
+
 	def post(self):
-		text_dict = request.get_json(force=True)
+		text_dict = request.form.to_dict()
 		text_df = pd.DataFrame([text_dict['text']], columns = ['text'], index = [0])
 		pre.preprocess_text_cols(text_df)
 		pre.create_new_features(text_df)
@@ -28,15 +33,20 @@ class predict(Resource):
 
 		prediction = int(model.predict(train[features])[0])
 
-		return jsonify({"result": prediction})
+		if prediction == 0:
+			return "Disaster Tweet: No"
+		elif prediction == 1:
+			return "Disaster Tweet: Yes"
+		else:
+			return "Error"
 
 
 # Endpoints
 
 api.add_resource(status, "/status")
-api.add_resource(predict, "/predict.json")
+api.add_resource(predict, "/predict")
 
 # Run app
 
 if __name__ == "__main__":
-	app.run(debug=False, port=3000)
+	app.run(debug=True, port=3000)

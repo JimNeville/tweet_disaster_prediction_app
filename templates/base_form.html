@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<h4>
+Enter your tweet below and the model will predict whether or not your tweet is about a disaster
+</h4>
+
+<!-- <form action="/predict" method="post">
+	<input style="height:40px;width:600px;font-size:12pt;" type="text" id="text" name="text"> <br>
+	<input type="submit" value="Submit">
+</form><br> -->
+
+<form action="/predict" method="post" class="w3-container">
+
+<p>
+<input class="w3-input w3-animate-input w3-border" type="text" name="text" style="width:30%">
+</p>
+
+<p>
+<input class="w3-btn w3-blue" type="submit" value="Submit">
+</p>
+
+</form>
+
+<h3>Examples</h3>
+<h5>Non-Disaster Tweets</h5>
+<li>This is a test</li> 
+<li>@Mike @Karen Check out this link! http://www.google.com/image/12345</li> 
+<h5>Disaster Tweets</h5>
+<li>Fire, Fire! Across the street.</li>
+<li>Watch out for the tornado http://www.abcnews.com/78923</li><br>
+
+
+
+
+
+
+
+
+</body>
+</html>
