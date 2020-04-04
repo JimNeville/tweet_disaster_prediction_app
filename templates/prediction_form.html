@@ -1,0 +1,20 @@
+{% extends 'base_form.html' %}
+
+
+{% block content %}
+
+{% if prediction == 0 %}
+	<h4> Tweet: {{ text }} </h4>
+	<h4> Prediction: Not a Disaster Tweet </h4>
+
+{% elif prediction == 1 %}
+	<h4> Tweet: {{ text }} </h4>
+	<h4> Prediction: Disaster Tweet </h4>
+
+{% else %}
+	<h4> Text: {{ text }} </h4>
+	<h4> Prediction: Error </h4>
+
+{% endif %}
+
+{% endblock content %}

@@ -32,13 +32,14 @@ class predict(Resource):
 		train, features = pre.return_final_df(text_df, word_features_train_df, target_series=None)
 
 		prediction = int(model.predict(train[features])[0])
+		headers = {'Content-Type': 'text/html'}
 
 		if prediction == 0:
-			return "Disaster Tweet: No"
+			return make_response(render_template('prediction_form.html', prediction = prediction, text = text_dict['text']), 200, headers)
 		elif prediction == 1:
-			return "Disaster Tweet: Yes"
+			return make_response(render_template('prediction_form.html', prediction = prediction, text = text_dict['text']), 200, headers)
 		else:
-			return "Error"
+			return make_response(render_template('prediction_form.html', prediction = 'Error', text = text_dict['text']), 200, headers)
 
 
 # Endpoints
