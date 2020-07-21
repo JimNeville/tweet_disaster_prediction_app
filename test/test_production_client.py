@@ -26,6 +26,17 @@ class TestPredict(unittest.TestCase):
 		self.assertEqual(response.json()['result'], 0, "Should be: 0")
 		self.assertEqual(response.status_code, 200, "Should be: 200")
 
+	def test_blank_predict(self):
+		url = 'https://tweet-disaster-prediction.herokuapp.com/predict.json'
+
+		test_tweet = ''
+		tweet_json = json.dumps({"text": test_tweet})
+
+		response = requests.post(url, tweet_json)
+
+		self.assertEqual(response.json()['result'], 'Error', "Should be: 0")
+		self.assertEqual(response.status_code, 200, "Should be: 200")		
+
 
 if __name__ == '__main__':
 	unittest.main()
