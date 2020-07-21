@@ -55,8 +55,11 @@ class predict_json(Resource):
 		global corpus
 		word_features_train_df = pre.tf_idf(text_df, 'final_text', corpus)
 		train, features = pre.return_final_df(text_df, word_features_train_df, target_series=None)
-
-		prediction = int(model.predict(train[features])[0])
+		try:
+			prediction = int(model.predict(train[features])[0])
+		except ValueError as e:
+			prediction = None
+			return jsonify({"result": "Error"})
 
 		return jsonify({"result": prediction})
 
